@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <header><h1>ระบบจัดการข้อมูลพนักงาน</h1></header>
+  <section class="employee-content">
+    <h2>ข้อมูลพนักงาน</h2>
     <h4>
-      <FormComponent />
+      <ListData />
     </h4>
-    <h4>
-      <ListData :employees="employees" />
-    </h4>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -19,17 +18,36 @@ export default {
     ListData,
     FormComponent,
   },
-  data() {
-    return {
-      employees: [
-        { name: 'Mix', salary: 40000 },
-        { name: 'Max', salary: 30000 },
-        { name: 'Min' },
-        { name: 'Milk', salary: 15000 },
-      ],
-    };
-  },
 };
 </script>
 
-<style></style>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  box-shadow: 0 2px 8ps rgba(0, 0, 0, 0.26);
+  margin: 3rem;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: darkblue;
+  color: #fff;
+  text-align: center;
+}
+.employee-content {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 3rem;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+.employee-content h2 {
+  font-size: 2rem;
+  border-bottom: 4px solid #ccc;
+  color: darkblue;
+  margin: 0 0 1rem 0;
+}
+</style>

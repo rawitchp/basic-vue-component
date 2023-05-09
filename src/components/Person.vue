@@ -1,24 +1,49 @@
 <template>
-  <h1>
-    <div>Name: {{ name }} Salary: {{ salary }}</div>
-  </h1>
+  <li>
+    <h1>Name: {{ name }}</h1>
+    <button>ดูรายละเอียด</button>&nbsp;
+    <button>ลบข้อมูล</button>
+    <div v-show="isVisible">
+      Salary: {{ salary }} department: {{ department }}
+    </div>
+  </li>
 </template>
 
 <script>
 export default {
   name: 'Person',
   props: {
+    id: {
+      type: Number,
+    },
     name: { type: String, required: true },
     salary: {
       type: Number,
       default: 12000,
     },
+    department: { type: String, required: true },
+    isVisible: { type: Boolean, required: true },
   },
 };
 </script>
 
 <style scoped>
-h1 {
-  color: red;
+li {
+  margin: 1rem 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background: #8ddba4;
+  padding: 0.5rem;
+  color: #1f1f1f;
+  border-radius: 25px;
+}
+button {
+  font: inherit;
+  cursor: poniter;
+  border: 1px solid #ff0077;
+  background: #ff0077;
+  color: rhite;
+  padding: 0.05rem 1 rem;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
 }
 </style>
