@@ -4,7 +4,7 @@
       <FormComponent />
     </h4>
     <h4>
-      <ListData />
+      <ListData :employees="employees" />
     </h4>
   </div>
 </template>
@@ -18,6 +18,16 @@ export default {
   components: {
     ListData,
     FormComponent,
+  },
+  data() {
+    return {
+      employees: [
+        { name: 'Mix', salary: 40000 },
+        { name: 'Max', salary: 30000 },
+        { name: 'Min' },
+        { name: 'Milk', salary: 15000 },
+      ],
+    };
   },
 };
 </script>

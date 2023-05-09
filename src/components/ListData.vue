@@ -1,8 +1,14 @@
 <template>
-  <Person name="Mix" salary="20000" />
-  <Person name="Max" salary="22000" />
-  <Person name="Min" salary="15000" />
-  <Person name="Milk" salary="14000" />
+  <div>
+    <ul>
+      <Person
+        v-for="(item, index) in employees"
+        :key="index"
+        :name="item.name"
+        :salary="item.salary"
+      />
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -10,6 +16,7 @@ import Person from './Person.vue';
 export default {
   name: 'ListData',
   components: { Person },
+  props: ['employees'],
 };
 </script>
 
