@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>App Component</h1>
     <h4>
       <FormComponent />
     </h4>
@@ -23,6 +22,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>
