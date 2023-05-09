@@ -7,7 +7,9 @@
       :name="item.name"
       :salary="item.salary"
       :department="item.department"
-      :isVisible="isVisible"
+      :isVisible="item.isVisible"
+      @show="toggleVisible"
+      @delete="deleteEmployee"
     />
   </ul>
 </template>
@@ -17,6 +19,19 @@ import Person from './Person.vue';
 export default {
   name: 'ListData',
   components: { Person },
+  methods: {
+    toggleVisible(id) {
+      this.employees = this.employees.map((item) => {
+        if (item.id === id) {
+          return { ...item, isVisible: !item.isVisible };
+        }
+        return item;
+      });
+    },
+    deleteEmployee(id) {
+      this.employees = this.employees.filter((item) => item.id !== id);
+    },
+  },
   data() {
     return {
       employees: [

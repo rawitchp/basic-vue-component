@@ -1,8 +1,8 @@
 <template>
   <li>
     <h1>Name: {{ name }}</h1>
-    <button>ดูรายละเอียด</button>&nbsp;
-    <button>ลบข้อมูล</button>
+    <button @click="showDescription(id)">ดูรายละเอียด</button>&nbsp;
+    <button @click="deleteEmployee(id)">ลบข้อมูล</button>
     <div v-show="isVisible">
       Salary: {{ salary }} department: {{ department }}
     </div>
@@ -24,6 +24,14 @@ export default {
     department: { type: String, required: true },
     isVisible: { type: Boolean, required: true },
   },
+  methods: {
+    showDescription(id) {
+      this.$emit('show', id);
+    },
+    deleteEmployee(id) {
+      this.$emit('delete', id);
+    },
+  },
 };
 </script>
 
@@ -42,8 +50,10 @@ button {
   cursor: poniter;
   border: 1px solid #ff0077;
   background: #ff0077;
-  color: rhite;
-  padding: 0.05rem 1 rem;
+  color: white;
+  padding: 0.05rem 1rem;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 </style>
