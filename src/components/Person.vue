@@ -3,16 +3,14 @@
     <template v-slot:card-header>
       <h1>Name: {{ name }}</h1>
     </template>
-    <template v-slot:card-button>
-      <button @click="showDescription(id)">ดูรายละเอียด</button>&nbsp;
-      <button @click="deleteEmployee(id)">ลบข้อมูล</button>
-    </template>
+
     <template v-slot:card-content>
-      <transition name="fade">
-        <div v-show="isVisible">
-          Salary: {{ salary }} Department: {{ department }}
-        </div>
-      </transition>
+      <div>Salary: {{ salary }}</div>
+      <div>Department: {{ department }}</div>
+      <div>Gender: {{ gender }}</div>
+      <ul>
+        <li v-for="(item, i) in skill" :key="i">{{ item }}</li>
+      </ul>
     </template>
   </Card>
 </template>
@@ -31,17 +29,12 @@ export default {
       default: 12000,
     },
     department: { type: String, required: true },
-    isVisible: { type: Boolean, required: true },
+    gender: {
+      type: String,
+    },
+    skill: { type: Array },
   },
   components: { Card },
-  methods: {
-    showDescription(id) {
-      this.$emit('show', id);
-    },
-    deleteEmployee(id) {
-      this.$emit('delete', id);
-    },
-  },
 };
 </script>
 

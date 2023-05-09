@@ -1,15 +1,13 @@
 <template>
   <ul>
     <Person
-      v-for="item in employees"
-      :id="item.id"
-      :key="item.id"
+      v-for="(item, i) in employees"
+      :key="i"
       :name="item.name"
       :salary="item.salary"
       :department="item.department"
-      :isVisible="item.isVisible"
-      @show="toggleVisible"
-      @delete="deleteEmployee"
+      :gender="item.gender"
+      :skill="item.skill"
     />
   </ul>
 </template>
@@ -19,48 +17,11 @@ import Person from './Person.vue';
 import Card from './Card.vue';
 export default {
   name: 'ListData',
-  components: { Person, Card },
-  methods: {
-    toggleVisible(id) {
-      this.employees = this.employees.map((item) => {
-        if (item.id === id) {
-          return { ...item, isVisible: !item.isVisible };
-        }
-        return item;
-      });
-    },
-    deleteEmployee(id) {
-      this.employees = this.employees.filter((item) => item.id !== id);
-    },
+  components: {
+    Person,
+    Card,
   },
-  data() {
-    return {
-      employees: [
-        {
-          id: 1,
-          name: 'Mix',
-          salary: 40000,
-          department: 'Programmer',
-          isVisible: false,
-        },
-        {
-          id: 2,
-          name: 'Max',
-          salary: 30000,
-          department: 'Accounting',
-          isVisible: false,
-        },
-        { id: 3, name: 'Min', department: 'graphics', isVisible: false },
-        {
-          id: 4,
-          name: 'Milk',
-          salary: 15000,
-          department: 'Manager',
-          isVisible: false,
-        },
-      ],
-    };
-  },
+  props: ['employees'],
 };
 </script>
 
